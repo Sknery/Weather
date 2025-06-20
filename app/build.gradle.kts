@@ -4,6 +4,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -73,6 +74,11 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx) // Поддержка корутин в Room
+    kapt(libs.room.compiler)      // Annotation processor
 
+    // Gson для конвертации объектов в JSON и обратно
+    implementation(libs.gson)
 
 }
